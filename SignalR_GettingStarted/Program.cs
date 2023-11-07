@@ -1,5 +1,3 @@
-using SignalR_GettingStarted.Hubs;
-
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 

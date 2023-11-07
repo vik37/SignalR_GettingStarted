@@ -2,8 +2,18 @@
 
 public sealed class MessageBrokerPubSubWorker : BackgroundService
 {
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    private readonly IHubContext<MessageBrokerHub> _messages;
+
+    public MessageBrokerPubSubWorker(IHubContext<MessageBrokerHub> messages)
     {
-        throw new NotImplementedException();
+        _messages = messages;
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            await Task.Delay(1000);
+        }
     }
 }
