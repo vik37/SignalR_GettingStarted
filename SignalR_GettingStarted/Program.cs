@@ -1,3 +1,5 @@
+using SignalR_GettingStarted.WorkerService;
+
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
@@ -6,8 +8,8 @@ services.AddRazorPages();
 services.AddSignalR(optionsHub =>
 {
     optionsHub.EnableDetailedErrors = true;
-});  
-
+});
+services.AddHostedService<MessageBrokerPubSubWorker>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
